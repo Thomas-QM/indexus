@@ -1,0 +1,31 @@
+<html window-frame="extended" window-blurbehind="dark">
+	<head>
+		<title>WHOW</title>
+		<link href="style/window.css" rel="stylesheet" type="text/css" >
+	
+		<script type="text/tiscript">
+			$(button).onClick = function() {
+				var proc = System.Process.exec("explorer.exe");
+			}
+		</script>
+	
+		<style>
+			button {
+				width: 10%;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div class="window-headers" >
+			<div class="window-buttons" >
+				<button role=window-minimize >min</button>
+				<button role=window-maximize >max</button>
+				<button role=window-close >close</button>
+			</div>
+			<div role="window-caption" class="window-space" >&#65279;</div>
+		</div>
+
+		<button>Click me to AV</button>
+	</body>
+</html>
