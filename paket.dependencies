@@ -1,0 +1,17 @@
+source https://nuget.org/api/v2
+
+nuget Chessie
+nuget Hopac
+
+group Server
+    source https://nuget.org/api/v2
+    nuget Suave
+    
+    nuget Limebean
+    nuget Npgsql
+
+group Client
+    source https://nuget.org/api/v2
+
+group Test
+    source https://nuget.org/api/v2

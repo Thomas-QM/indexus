@@ -1,3 +1,8 @@
-Suave
-Akkling
-Akkling.Streams
+Chessie
+Hopac
+
+group Server
+    Suave
+
+    Limebean
+    Npgsql
