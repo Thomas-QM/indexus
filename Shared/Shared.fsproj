@@ -4,6 +4,8 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Auth.fs" />
+    <Compile Include="Channel.fs" />
     <Compile Include="Message.fs" />
     <Compile Include="User.fs" />
     <Compile Include="Guild.fs" />

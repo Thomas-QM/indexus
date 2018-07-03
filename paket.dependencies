@@ -3,6 +3,8 @@ source https://nuget.org/api/v2
 nuget Chessie
 nuget Hopac
 
+nuget Newtonsoft.Json
+
 group Server
     source https://nuget.org/api/v2
     nuget Suave

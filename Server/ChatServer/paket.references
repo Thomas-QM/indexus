@@ -1,6 +1,8 @@
 Chessie
 Hopac
 
+Newtonsoft.Json
+
 group Server
     Suave
 

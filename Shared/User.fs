@@ -1,2 +1,4 @@
 module User
-    type User = {UserId:int64; UserName:string; UserIcon:string}
+    type UserId = int64
+
+    type User = {UserId:UserId; UserName:string; UserIcon:string}

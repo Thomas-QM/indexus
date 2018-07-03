@@ -1,33 +1,63 @@
-module SocketRouting
+module Socket.Routing
 
 open System
+open System.Threading
 
 open Suave
+
 open Suave.Sockets
 open Suave.Sockets.Control
 open Suave.WebSocket
 
-let SocketHandShake (socket:WebSocket) (ctx:HttpContext) =
-    socket {
-        let mutable loop = true
+open Users
+open Hopac
+open Chessie.ErrorHandling
 
+open Socket.Utility
+
+open Newtonsoft.Json
+open Newtonsoft.Json.Serialization
+
+let settings = new JsonSerializerSettings (Error=new EventHandler<ErrorEventArgs> (fun x (y:ErrorEventArgs) -> y.ErrorContext.Handled <- true; ()))
+
+let SocketHandShake (websocket:WebSocket) (ctx:HttpContext) =
+    let mutable loop = true
+
+    let ch:UserSocket = Ch()
+    let send msg = JsonConvert.SerializeObject(msg,settings) |> tobyte |> websocket.send Text <| true
+
+    let uid = ref None
+
+    let channelserver =
+        job {
+            while loop do
+                let! msg = Ch.take ch
+                let! _ = send msg |> Job.fromAsync
+                ()
+            ()
+        } |> start
+
+    socket {
         while loop do
-            let! msg = webSocket.read()
+            let! msg = websocket.read()
 
             match msg with
             | (Text, data, true) ->
                 let str = UTF8.toString data
-                let response = sprintf "response to %s" str
-                let byteResponse =
-                    response
-                    |> System.Text.Encoding.ASCII.GetBytes
-                    |> ByteSegment
-                do! webSocket.send Text byteResponse true
+                let json = JsonConvert.DeserializeObject<ServerMessage>(str,settings)
+
+                if box json |> isNull then
+                    do! send ("Json is invalid." |> fail |> ServerResult)
+                else
+                    let msg = unbox<ServerMessage> json
+                    uid := msg |> HandleMessage !uid ch
 
             | (Close, _, _) ->
                 let emptyResponse = [||] |> ByteSegment
-                do! webSocket.send Close emptyResponse true
+                do! websocket.send Close emptyResponse true
                 loop <- false
+
+                !uid |> HandleDisconnect
 
             | _ -> ()
     }

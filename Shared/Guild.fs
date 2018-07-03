@@ -1,2 +1,4 @@
 module Guild
-    type Guild = {GuildId:int64; GuildName:string; GuildIcon:string}
+    type GuildId = int64
+
+    type Guild = {GuildId:GuildId; GuildName:string; GuildIcon:string}
