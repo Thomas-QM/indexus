@@ -8,3 +8,4 @@ group Server
 
     Limebean
     Npgsql
+    Hash

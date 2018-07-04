@@ -9,6 +9,7 @@
 
     <Compile Include="Auth/Auth.fs" />
 
+    <Compile Include="Chat/Channel.fs" />
     <Compile Include="Chat/Users.fs" />
 
     <Compile Include="SocketRouting.fs" />

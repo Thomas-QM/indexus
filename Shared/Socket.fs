@@ -2,19 +2,17 @@ module Socket
 
 open Chessie.ErrorHandling
 open Message
+open Channel
 open Guild
+open Auth
 
 type ClientMessage =
-    | NewMessage of Message
-    | ServerUpdate of Guild
+    | Channel of CChannelMsg
 
     | ServerResult of Result<unit, string>
-
     | Authorized of AuthToken
 
 type ServerMessage =
-    | NewMessage of Auth<string>
-    // | SetChannelFocus of ChannelId
-    // | SetTyping of bool
+    | Channel of SChannelMsg
 
     | Authorize of Login

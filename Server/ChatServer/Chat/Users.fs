@@ -11,12 +11,6 @@ open System
 
 type UserSocket = Ch<ClientMessage>
 
-type UserSocketsMessage =
-    | Register of UserId*UserSocket
-    | Deregister of UserId
-
-    | SendUserMessage of UserId*ClientMessage
-
 let users = Map.empty<int64, UserSocket> |> MVar
 
 // Job.iterateServer defaultstate <| fun x -> job {
