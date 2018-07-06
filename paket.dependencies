@@ -1,7 +1,8 @@
 source https://nuget.org/api/v2
 
-nuget Chessie
 nuget Hopac
+nuget Chessie
+nuget Chessie.Hopac
 
 nuget Newtonsoft.Json
 

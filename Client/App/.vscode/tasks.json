@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/TestCoreGTK.csproj"
+                "${workspaceFolder}/AppGTK.fsproj"
             ],
             "problemMatcher": "$msCompile"
         },
@@ -17,17 +17,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/TestCoreWindows.csproj"
-            ],
-            "problemMatcher": "$msCompile"
-        },
-        {
-            "label": "build",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "build",
-                "${workspaceFolder}/TestCore.csproj"
+                "${workspaceFolder}/AppWindows.fsproj"
             ],
             "problemMatcher": "$msCompile"
         }

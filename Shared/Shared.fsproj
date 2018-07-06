@@ -5,10 +5,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Auth.fs" />
+    <Compile Include="Group.fs" />
+    <Compile Include="User.fs" />
     <Compile Include="Message.fs" />
     <Compile Include="Channel.fs" />
-    <Compile Include="Guild.fs" />
-    <Compile Include="User.fs" />
 
     <Compile Include="Socket.fs" />
   </ItemGroup>

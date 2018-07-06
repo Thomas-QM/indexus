@@ -3,14 +3,14 @@ module Socket
 open Chessie.ErrorHandling
 open Message
 open Channel
-open Guild
+open Group
 open Auth
 
 type ClientMessage =
     | Channel of CChannelMsg
 
     | ServerResult of Result<unit, string>
-    | Authorized of AuthToken
+    | AuthorizedToken of AuthToken
 
 type ServerMessage =
     | Channel of SChannelMsg

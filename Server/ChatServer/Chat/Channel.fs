@@ -1,16 +1,16 @@
 module Channel
 
+open UserSocket
 open Channel
+open User
+open Auth
+open Socket
 
-let NotifyPerson
+let MakeNewMessage chan usr txt =
+    SendMessageInWatch watch (ClientMessage.NewMessage {})
 
-
-let NotifyInChannel
-    
-
-let NotifyEveryone
-
-
-let HandleChannelMsg x =
-    match x with
-        | NewMessage x ->
+let HandleChannelMsg us x =
+    let {Ch=ch; Watching=watch} = us
+    match x, watch with
+        | Authorized (NewMessage x, uid), Some watch ->
+            

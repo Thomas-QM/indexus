@@ -1,2 +1,5 @@
 module Message
-    type Message = {UserId:int64; UserName:string; Time:int64} //TODO: add channel
+    open User
+
+    type MessageId = int64
+    type Message = {MessageId: MessageId; UserId: UserId; Text:string; Time:int64} //TODO: add channel

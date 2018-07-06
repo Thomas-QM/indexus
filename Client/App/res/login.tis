@@ -1,0 +1,7 @@
+namespace Login {
+    function Register () {
+        self.on("click", function funcName(params) {
+            // code...
+        })
+    }
+}

@@ -5,9 +5,21 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Utility/Chessie.fs" />
     <Compile Include="Utility/SocketUtility.fs" />
+    <Compile Include="Utility/LimeBean.fs" />
+
+    <Compile Include="Data/Message.fs" />
+    <Compile Include="Data/User.fs" />
+    <Compile Include="Data/Channel.fs" />
+    <Compile Include="Data/Group.fs" />
+    <Compile Include="Data/GroupUser.fs" />
+    <Compile Include="Data/ChannelUser.fs" />
+    <Compile Include="Data/Data.fs" />
 
     <Compile Include="Auth/Auth.fs" />
+
+    <Compile Include="Chat/UserSocket.fs" />
 
     <Compile Include="Chat/Channel.fs" />
     <Compile Include="Chat/Users.fs" />

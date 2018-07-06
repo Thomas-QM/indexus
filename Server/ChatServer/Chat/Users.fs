@@ -1,17 +1,15 @@
-module Users
+module User
 open Hopac
 open Chessie.ErrorHandling
 
 open Socket
 open User
+open UserSocket
+open Channel
 
 open Suave.WebSocket
 
 open System
-
-type UserSocket = Ch<ClientMessage>
-
-let users = Map.empty<int64, UserSocket> |> MVar
 
 // Job.iterateServer defaultstate <| fun x -> job {
 //     printfn "Iterating server..."
@@ -43,13 +41,7 @@ let HandleDisconnect uid =
 
     uid |> Option.iter (fun uid -> MVar.mutateFun (mutator uid) users |> run)
 
-let SendMessage uid msg =
-    users |> MVar.read |> Alt.afterFun (fun x -> x.TryFind uid) |> Alt.afterFun (Option.iter (fun x -> Ch.give x msg |> run)) |> run
-
-let SendMessageAll msg =
-    users |> MVar.read |> Alt.afterFun (Map.iter (fun id y -> printfn "Sending message to %i" id; Ch.give y msg |> run)) |> run
-
 job {
-    SendMessageAll (ok () |> ServerResult)
+    SendMessageInWatch 1L (ok () |> ServerResult)
     do! timeOutMillis 900
 } |> Job.foreverServer |> run
