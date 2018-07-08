@@ -1,0 +1,41 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{83EE6783-C6AA-421C-B18B-460D2AA0CA7F}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		OmniCode-Settings.json = OmniCode-Settings.json
+		IndexusApp\scripts\packOSX.sh = IndexusApp\scripts\packOSX.sh
+	EndProjectSection
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "IndexusAppWindows", "IndexusApp\IndexusAppWindows.fsproj", "{FABEBB54-7E6E-4DCD-A4A3-D713EA38731B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FABEBB54-7E6E-4DCD-A4A3-D713EA38731B}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{FABEBB54-7E6E-4DCD-A4A3-D713EA38731B}.Debug|x64.ActiveCfg = Debug|x64
+		{FABEBB54-7E6E-4DCD-A4A3-D713EA38731B}.Debug|x64.Build.0 = Debug|x64
+		{FABEBB54-7E6E-4DCD-A4A3-D713EA38731B}.Debug|x86.ActiveCfg = Debug|x86
+		{FABEBB54-7E6E-4DCD-A4A3-D713EA38731B}.Debug|x86.Build.0 = Debug|x86
+		{FABEBB54-7E6E-4DCD-A4A3-D713EA38731B}.Release|Any CPU.ActiveCfg = Release|x86
+		{FABEBB54-7E6E-4DCD-A4A3-D713EA38731B}.Release|x64.ActiveCfg = Release|x64
+		{FABEBB54-7E6E-4DCD-A4A3-D713EA38731B}.Release|x64.Build.0 = Release|x64
+		{FABEBB54-7E6E-4DCD-A4A3-D713EA38731B}.Release|x86.ActiveCfg = Release|x86
+		{FABEBB54-7E6E-4DCD-A4A3-D713EA38731B}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A5DC555E-A237-4F94-B075-364E380ECA38}
+	EndGlobalSection
+EndGlobal

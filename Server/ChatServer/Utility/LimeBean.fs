@@ -8,6 +8,10 @@ open Hopac
 open Chessie.ErrorHandling
 open Chessie.Hopac
 
+let OptFromNull (x) =
+    let o = box x
+    if isNull o then None else Some (unbox<'b> o)
+
 let ToObj x =
     x :> obj
 
