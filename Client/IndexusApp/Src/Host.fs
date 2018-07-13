@@ -2,14 +2,17 @@ module Host
 
 open SciterSharp
 open SciterSharp.Interop
+open System.Runtime.InteropServices
 
 open System
 open System.IO
 
-type HostEvh() =
+type HostEvh() as x =
     inherit SciterEventHandler()
 
-    member x.Host_HelloWorld (el, args, result) =
+    member public x.Host_HelloWorld (el:SciterElement, args:SciterValue array, [<Out>] (result:byref<SciterValue>)) =
+        result <- new SciterValue("hallo world")
+        
         true
 
 
@@ -25,9 +28,6 @@ type BaseHost () =
 
     member x.api = SciterX.API
     member x.archive = new SciterArchive()
-
-    member x.BaseHost() =
-        ()
 
     member x.Setup (newwnd:SciterWindow) =
         wnd <- newwnd

@@ -3,8 +3,9 @@
   <PropertyGroup>
     <ProjectGuid>{95EE3B89-3300-4482-95A3-DC42EC8B3676}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>IndexusApp</RootNamespace>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>IndexusApp</AssemblyName>
+    <RootNamespace>IndexusApp</RootNamespace>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
@@ -30,24 +31,63 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\IconMain.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <Choose>
+    <When Condition="'$(VisualStudioVersion)' == '11.0'">
+      <PropertyGroup Condition=" '$(FSharpTargetsPath)' == '' AND Exists('$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.0\Framework\v4.0\Microsoft.FSharp.Targets') ">
+        <FSharpTargetsPath>$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.0\Framework\v4.0\Microsoft.FSharp.Targets</FSharpTargetsPath>
+      </PropertyGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup Condition=" '$(FSharpTargetsPath)' == '' AND Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\FSharp\Microsoft.FSharp.Targets') ">
+        <FSharpTargetsPath>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\FSharp\Microsoft.FSharp.Targets</FSharpTargetsPath>
+      </PropertyGroup>
+    </Otherwise>
+  </Choose>
+  <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
-    <Reference Include="SciterSharpGTK, Version=2.0.37.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SciterSharpGTK.2.0.37\lib\net45\SciterSharpGTK.dll</HintPath>
+    <Reference Include="SciterSharpGTK">
+      <HintPath>..\packages\SciterSharpGTK.2.0.68\lib\net45\SciterSharpGTK.dll</HintPath>
     </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Src\App.cs" />
-    <Compile Include="Src\Mono.cs" />
-    <Compile Include="Src\Host.cs" />
-    <Compile Include="Src\ProgramOSX.cs" />
-    <Compile Include="Src\ProgramWL.cs" />
-    <Compile Include="Src\Window.cs" />
+    <Compile Include="Properties\AssemblyInfo.fs" />
+    <None Include="res\index.html" />
+    <Content Include="scripts\packfolder.exe" />
+    <Compile Include="Resources\Resources.fs" />
+    <Compile Include="Src\App.fs" />
+    <Compile Include="Src\Host.fs" />
+    <Compile Include="Src\Mono.fs" />
+    <Compile Include="Src\ProgramOSX.fs" />
+    <Compile Include="Src\Window.fs" />
+    <Compile Include="Src\ProgramWL.fs" />
+    <EmbeddedResource Include="Resources.resx" />
+    <Content Include="packages.IndexusAppGTK.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.IndexusAppGTK.config" />
-    <None Include="res\index.html" />
+    <Reference Include="FSharp.Configuration">
+      <HintPath>..\packages\FSharp.Configuration.1.5.0\lib\net45\FSharp.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="FSharp.Core">
+      <HintPath>..\packages\FSharp.Core.4.0.0.1\lib\net40\FSharp.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="SharpYaml">
+      <HintPath>..\packages\FSharp.Configuration.1.5.0\lib\net45\SharpYaml.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.ValueTuple">
+      <HintPath>..\..\packages\System.ValueTuple.4.4.0\lib\net461\System.ValueTuple.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

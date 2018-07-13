@@ -2,15 +2,17 @@
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{fabebb54-7e6e-4dcd-a4a3-d713ea38731b}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <ProjectGuid>{FABEBB54-7E6E-4DCD-A4A3-D713EA38731B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>IndexusApp</RootNamespace>
+    <AssemblyName>IndexusApp</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <UseStandardResourceNames>true</UseStandardResourceNames>
-    <TargetFSharpCoreVersion>4.4.3.0</TargetFSharpCoreVersion>
+    <TargetFrameworkProfile />
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <DebugSymbols>true</DebugSymbols>
@@ -54,35 +56,22 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE;WINDOWS</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Resources\IconMain.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
-  <!-- <ItemGroup>
-    <Compile Include="Src\App.fs" />
-    <Compile Include="Src\ArchiveResource.fs" />
-    <Compile Include="Src\Host.fs" />
-    <Compile Include="Properties\AssemblyInfo.fs" />
-    <Compile Include="Properties\Resources.Designer.fs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Src\Mono.fs" />
-    <Compile Include="Src\ProgramOSX.fs" />
-    <Compile Include="Src\ProgramWL.fs" />
-    <Compile Include="Src\Window.fs" />
-  </ItemGroup> -->
-  <!-- <ItemGroup>
-    <None Include="app.manifest" />
-    <None Include="packages.IndexusAppWindows.config" />
-    <None Include="Resources\IconMain.ico" />
-    <None Include="scripts\packfolder" />
-    <None Include="scripts\pack.sh" />
-    <None Include="scripts\packWindows.bat" />
-  </ItemGroup> -->
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '11.0'">
       <PropertyGroup Condition=" '$(FSharpTargetsPath)' == '' AND Exists('$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.0\Framework\v4.0\Microsoft.FSharp.Targets') ">
@@ -101,27 +90,39 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.fs" />
-    <None Include="res\index.html" />
+    <None Include="res\Login\login.html" />
+    <Content Include="res\Login\login.css" />
+    <Content Include="res\Style\style.css" />
+    <Content Include="res\Style\dark.css" />
+    <Content Include="res\Style\light.css" />
+    <None Include="res\Script\debug.tis" />
     <Content Include="sciter.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="scripts\packfolder.exe" />
+    <Compile Include="Resources\Resources.fs" />
     <Compile Include="Src\App.fs" />
     <Compile Include="Src\Host.fs" />
     <Compile Include="Src\Mono.fs" />
     <Compile Include="Src\ProgramOSX.fs" />
     <Compile Include="Src\Window.fs" />
     <Compile Include="Src\ProgramWL.fs" />
+    <EmbeddedResource Include="Resources.resx" />
+    <Content Include="packages.IndexusAppWindows.config" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="FSharp.Configuration">
+      <HintPath>..\packages\FSharp.Configuration.1.5.0\lib\net45\FSharp.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="FSharp.Core">
+      <HintPath>..\packages\FSharp.Core.4.0.0.1\lib\net40\FSharp.Core.dll</HintPath>
+    </Reference>
     <Reference Include="SciterSharpWindows, Version=2.0.61.0, Culture=neutral, PublicKeyToken=917100d643775a9e, processorArchitecture=MSIL">
       <HintPath>..\packages\SciterSharpWindows.2.0.61\lib\net45\SciterSharpWindows.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib" />
-    <Reference Include="FSharp.Core">
-      <Name>FSharp.Core</Name>
-      <AssemblyName>FSharp.Core.dll</AssemblyName>
-      <HintPath>$(MSBuildProgramFiles32)\Reference Assemblies\Microsoft\FSharp\.NETFramework\v4.0\$(TargetFSharpCoreVersion)\FSharp.Core.dll</HintPath>
+    <Reference Include="SharpYaml">
+      <HintPath>..\packages\FSharp.Configuration.1.5.0\lib\net45\SharpYaml.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

@@ -1,0 +1,12 @@
+﻿@import url("../Style/style.css");
+
+body {
+    background-image: url("https://source.unsplash.com/featured/?nature,space,sky");
+    background-size: cover;
+    background-position: center center;
+    margin: 0;
+}
+
+.container label {
+    text-transform: uppercase;
+}

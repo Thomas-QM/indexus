@@ -1,0 +1,7 @@
+﻿@const BG: #FBFBFB;
+@const BG2: #DFDFDF;
+@const BGACTIVE: white;
+@const FG: black;
+
+@const BGSHADOW: 0 0 20px 10px @BG2;
+@const HIGHLIGHT: 1px solid #C0C0C0;

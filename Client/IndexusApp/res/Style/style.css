@@ -1,0 +1,84 @@
+﻿@import url("light.css");
+
+* {
+    color: @FG;
+    font-family: sans-serif;
+}
+
+.container {
+    margin: 2*;
+    background-color: @BG;
+    border-radius: 8px;
+    min-height: 30%;
+    padding: 0.1*;
+    flow: vertical;
+    border: @HIGHLIGHT;
+
+    box-shadow: @BGSHADOW;
+}
+
+.container h1 {
+    height: 0.6*;
+}
+
+/*FORMS:*/
+
+container form {
+    height: 5*;
+}
+
+form {
+    flow: vertical;
+}
+
+.formgroup {
+    height: 1*;
+    flow: horizontal-flow;
+}
+
+label {
+    margin-bottom: 0.1*;
+    margin-right: 0.1*;
+    font-weight: bold;
+    width: 1*;
+
+    vertical-align: baseline;
+}
+
+input {
+    text-selection: black white;
+    background: @BG2;
+    margin-bottom: 5%;
+    width: 2*;
+
+    padding: 8px;
+}
+
+input:focus {
+    border: @HIGHLIGHT;
+    padding: 7px;
+}
+
+/*BUTTONS*/
+
+button {
+    background: @BG2;
+    width: 0.5*;
+    margin: 0 0.25*;
+    cursor: pointer;
+}
+
+.big {
+    /*padding: 10%;*/
+    margin-top: 0.2*;
+
+    font-size: 2em;
+}
+
+button:hover {
+    background: @BGACTIVE;
+}
+
+button:active {
+    border: @HIGHLIGHT;
+}

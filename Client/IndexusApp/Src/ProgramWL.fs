@@ -1,26 +1,23 @@
 module Program
 open Host
+open Window
 
 open SciterSharp
 open SciterSharp.Interop
 
-
 [<EntryPoint>]
 let main args =
-    let win = new SciterWindow()
-
-    let mutable rc = PInvokeUtils.RECT()
-    rc.right <- 800
-    rc.bottom <- 600
-
-    win.CreateMainWindow(1500,800)
-    win.CenterTopLevelWindow()
+    let win = new SciterWindow () |> ConfigureWindow
     
     let host = new BaseHost()
     host.Setup(win)
     host.AttachEvh(new HostEvh())
-    host.SetupPage("index.html") |> ignore
-    //host.DebugInspect()
+    host.SetupPage("Login/login.html") |> ignore
+
+    try
+        host.DebugInspect()
+    with
+        | _ -> ()
 
     win.Show()
     PInvokeUtils.RunMsgLoop ()

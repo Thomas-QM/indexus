@@ -1,0 +1,17 @@
+﻿$(a).on("click", function(evt) {
+	Sciter.launch(this.@#href);
+    return true;
+});
+
+self.on("keydown", function(evt) {
+	if(evt.keyCode == Event.VK_F5)
+	{
+		view.load(self.url());
+		return true;
+	}
+	if(evt.keyCode == Event.VK_F12)
+	{
+		view.connectToInspector();
+		return true;
+	}
+});
